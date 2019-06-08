@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="background-image: url(bg.jpg); background-size: 100%">
+	<h4>Очки :
+		<span class="score">0</span>
+	</h4>
+	<h4>Жуки :
+		<span class="bugs">0</span></h4>
+
+<script type="text/javascript">
+	document.querySelector(".score")
+	document.querySelector(".bugs")
+	let score = 0;
+	let bugs = 0;
+
+	let interv= function(){
+
+	let x =Math.random()*95
+	let okrx =Math.round(x)
+
+	let y =Math.random()*500
+	let okry =Math.round(y)
+
+
+	let newDiv = document.createElement('img');
+	document.body.appendChild(newDiv);
+	newDiv.src = "img.svg";
+	newDiv.style.width ="7%";
+	newDiv.style.height ="7%";
+	newDiv.style.position ="absolute";
+	newDiv.style.marginLeft = okrx+"%"; 
+	newDiv.style.marginTop = okry+"px";
+	newDiv.onclick = function(){
+		newDiv.style.display = "none"
+		score = score + 1
+		document.querySelector(".score").innerHTML = score
+	
+	}
+	bugs = bugs + 1 
+		document.querySelector(".bugs").innerHTML = bugs
+	}
+	let end = function(){
+		if (score >= 10){
+			alert("вы победили")
+			clearInterval(stop)
+		}
+		else{
+			alert("вы проиграли")
+			clearInterval(stop)
+		} 
+	}
+	let stop = setInterval(interv,750)
+
+	setTimeout(end,10000)
+</script>
+</body>
+</html>
